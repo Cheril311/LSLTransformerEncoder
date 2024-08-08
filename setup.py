@@ -11,7 +11,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'pretrain=scripts.pretrain:main',
+            'pretrain=scripts.pretrainLSL:main',
             'posttrain=scripts.posttrain:main',
         ],
     },
