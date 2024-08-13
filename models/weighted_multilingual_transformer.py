@@ -9,7 +9,7 @@ class WeightedMultilingualTransformerEncoderLayer(nn.Module):
         super().__init__()
         self.shared_token = "__shared__"
         # Filter for unique languages.
-        languages = [self.get_src(lp) for lp in cfg.lang_pairs]
+        languages = [self.get_src(lp) for lp in cfg.langs]
         languages = [self.shared_token] + sorted(set(languages))
         self.models = nn.ModuleDict({lang: TransformerEncoderLayerBase(cfg, layer=layer) for lang in languages})
         self.mixing_params = nn.Parameter(torch.ones([2]))
@@ -26,6 +26,6 @@ class WeightedMultilingualTransformerEncoderLayer(nn.Module):
 
     def forward(self, x, encoder_padding_mask, attn_mask: Optional[torch.Tensor] = None):
         shared_repr = self.models[self.shared_token].forward(x, encoder_padding_mask, attn_mask)
-        src_repr = self.models[self.lang_pair].forward(x, encoder_padding_mask, attn_mask)
+        src_repr = self.models[self.lang].forward(x, encoder_padding_mask, attn_mask)
         mixing_weights = utils.softmax(self.mixing_params, dim=-1)
         return mixing_weights[0] * shared_repr + mixing_weights[1] * src_repr 
