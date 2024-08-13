@@ -7,7 +7,7 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
     url="https://github.com/Cheril311/LSLTransformerEncoder/",  # Replace with your repo URL
-    packages=find_packages(include=['models', 'scripts', 'utils']),
+    packages=find_packages(include=['models']),
     install_requires=[
         'torch>=1.9.0',  # Specify the PyTorch version required
         'fairseq>=0.10.2',  # Specify the fairseq version required
