@@ -7,12 +7,7 @@ This repository contains the implementation of a multilingual transformer with l
 1. Clone the repository.
 2. Install the required packages using `pip install -r requirements.txt`.
 
-## Structure
 
-- `models/`: Contains the model definitions.
-- `data/`: Place your datasets by making this directory.
-- `scripts/`: You can place your training scripts by making this directory.
-- `checkpoints/`: Place your saved model weights by making this directory.
 
 ## Citation
 
